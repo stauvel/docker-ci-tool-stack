@@ -14,11 +14,11 @@ RUN INSTALL_PKGS="java-1.8.0-openjdk.x86_64" && \
 # Install packages necessary
 RUN yum -y install unzip && yum clean all
 
-ADD $JBOSS_ZIP jboss.zip
+COPY $JBOSS_ZIP jboss.zip
 RUN set -x \
 	&& mkdir -p ${JBOSS_HOME} && unzip jboss.zip -d ${JBOSS_HOME}/
 
-ADD $WAR_PATH $JBOSS_HOME/standalone/deployments/
+COPY $WAR_PATH $JBOSS_HOME/standalone/deployments/
 VOLUME $JBOSS_LOG
 
 CMD $JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --debug >> $JBOSS_LOG/jboss.log
