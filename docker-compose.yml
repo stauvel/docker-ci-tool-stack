@@ -78,3 +78,15 @@ services:
     - /opt/gitlab/config:/etc/gitlab
     - /opt/gitlab/logs:/var/log/gitlab
     - /opt/gitlab/data:/var/opt/gitlab
+
+jboss:
+  build: ./jboss
+    restart: always
+    ports:
+      - "28080:8080"
+      - "9090:9090"
+      - "8787:8787"
+    networks:
+      - prodnetwork
+    volumes:
+      - /opt/jboss:/var/log/jboss
