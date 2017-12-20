@@ -26,6 +26,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
     - /opt/jenkins/:/var/lib/jenkins/
+    - /var/cip:/var/docker-cip
   depends_on:
     - nexus
     - gitlab

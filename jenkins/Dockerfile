@@ -28,6 +28,9 @@ COPY jobs/3-conference-app-seed-job.xml /usr/share/jenkins/ref/jobs/3-conference
 COPY jobs/4-selenium2-seed-job.xml /usr/share/jenkins/ref/jobs/4-selenium2-seed-job/config.xml
 COPY jobs/5-docker-admin-seed-job.xml /usr/share/jenkins/ref/jobs/5-docker-admin-seed-job/config.xml
 
+# Expose Continuous Integration Data :
+VOLUME /var/cip
+
 ############################################
 # Configure Jenkins
 ############################################
@@ -47,3 +50,4 @@ COPY config/ssh-keys/cd-demo.pub /usr/share/jenkins/ref/.ssh/id_rsa.pub
 # tell Jenkins that no banner prompt for pipeline plugins is needed
 # see: https://github.com/jenkinsci/docker#preinstalling-plugins
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
+

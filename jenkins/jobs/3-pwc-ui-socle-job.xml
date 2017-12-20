@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@2.16">
+  <actions/>
+  <description>Chaque branche sera découverte automatiquement et construite à chaque fois qu&apos;un utilisateur met à jour le repository origin (&lt;i&gt;git push origin &lt;b&gt;my/branch&lt;/b&gt;&lt;/i&gt;)&lt;br/&gt;
+Le détail des étapes du Job est défini dans un fichier &lt;b&gt;Jenkinsfile&lt;/b&gt; à la racine.&lt;br/&gt;
+La branche sera déployée sur &lt;a href =&quot;http://powercardangular.aix.hps.int:1080&quot;&gt;http://powercardangular.aix.hps.int:1080/&lt;b&gt;my/branch&lt;/b&gt;&lt;/a&gt;</description>
+  <displayName>PowerCard UI Socle </displayName>
+  <properties>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig plugin="pipeline-model-definition@1.1.9">
+      <dockerLabel></dockerLabel>
+      <registry plugin="docker-commons@1.8"/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig>
+  </properties>
+  <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.0.11">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </folderViews>
+  <healthMetrics>
+    <com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric plugin="cloudbees-folder@6.1.0">
+      <nonRecursive>false</nonRecursive>
+    </com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+  </healthMetrics>
+  <icon class="jenkins.branch.MetadataActionFolderIcon" plugin="branch-api@2.0.11">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </icon>
+  <orphanedItemStrategy class="com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy" plugin="cloudbees-folder@6.1.0">
+    <pruneDeadBranches>true</pruneDeadBranches>
+    <daysToKeep>0</daysToKeep>
+    <numToKeep>0</numToKeep>
+  </orphanedItemStrategy>
+  <triggers>
+    <com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger plugin="cloudbees-folder@6.1.0">
+      <spec>* * * * *</spec>
+      <interval>60000</interval>
+    </com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger>
+  </triggers>
+  <disabled>false</disabled>
+  <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@2.0.11">
+    <data>
+      <jenkins.branch.BranchSource>
+        <source class="jenkins.plugins.git.GitSCMSource" plugin="git@3.6.4">
+          <id>12cbcf2d-830f-41ca-82aa-df29c906ba58</id>
+          <remote>http://10.1.50.26/powercard/pwc-ui-socle.git</remote>
+          <credentialsId>Git_Credentials</credentialsId>
+          <traits>
+            <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
+          </traits>
+        </source>
+        <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
+          <properties class="empty-list"/>
+        </strategy>
+      </jenkins.branch.BranchSource>
+    </data>
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </sources>
+  <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    <scriptPath>Jenkinsfile</scriptPath>
+  </factory>
+</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>
