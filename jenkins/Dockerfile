@@ -22,11 +22,9 @@ COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/plugins.txt
 
 # Adding default Jenkins Jobs
-COPY jobs/1-github-seed-job.xml /usr/share/jenkins/ref/jobs/1-github-seed-job/config.xml
-COPY jobs/2-job-dsl-seed-job.xml /usr/share/jenkins/ref/jobs/2-job-dsl-seed-job/config.xml
-COPY jobs/3-conference-app-seed-job.xml /usr/share/jenkins/ref/jobs/3-conference-app-seed-job/config.xml
-COPY jobs/4-selenium2-seed-job.xml /usr/share/jenkins/ref/jobs/4-selenium2-seed-job/config.xml
-COPY jobs/5-docker-admin-seed-job.xml /usr/share/jenkins/ref/jobs/5-docker-admin-seed-job/config.xml
+COPY jobs/1-test-job.xml /usr/share/jenkins/ref/jobs/1-test-job/config.xml
+COPY jobs/2-pwc-ui-shared-job.xml /usr/share/jenkins/ref/jobs/2-pwc-ui-shared-job/config.xml
+COPY jobs/3-pwc-ui-socle-job.xml /usr/share/jenkins/ref/jobs/3-pwc-ui-socle-job/config.xml
 
 # Expose Continuous Integration Data :
 VOLUME /var/cip
@@ -40,6 +38,7 @@ COPY config/config.xml /usr/share/jenkins/ref/config.xml
 # Jenkins Settings, i.e. Maven, Groovy, ...
 COPY config/hudson.tasks.Maven.xml /usr/share/jenkins/ref/hudson.tasks.Maven.xml
 COPY config/hudson.plugins.groovy.Groovy.xml /usr/share/jenkins/ref/hudson.plugins.groovy.Groovy.xml
+COPY config/jenkins.plugins.nodejs.tools.NodeJSInstallation.xml /usr/share/jenkins/ref/jenkins.plugins.nodejs.tools.NodeJSInstallation.xml
 COPY config/maven-global-settings-files.xml /usr/share/jenkins/ref/maven-global-settings-files.xml
 
 # SSH Keys & Credentials
