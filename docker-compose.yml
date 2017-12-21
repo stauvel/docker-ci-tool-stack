@@ -25,7 +25,7 @@ services:
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
-    - /opt/jenkins/:/var/lib/jenkins/
+    - /opt/jenkins:/var/lib/jenkins
     - /var/docker-cip:/var/cip
   depends_on:
     - nexus

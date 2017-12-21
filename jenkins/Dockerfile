@@ -28,6 +28,7 @@ COPY jobs/3-pwc-ui-socle-job.xml /usr/share/jenkins/ref/jobs/3-pwc-ui-socle-job/
 
 # Expose Continuous Integration Data :
 VOLUME /var/cip
+VOLUME /var/lib/jenkins
 
 ############################################
 # Configure Jenkins
@@ -40,6 +41,7 @@ COPY config/hudson.tasks.Maven.xml /usr/share/jenkins/ref/hudson.tasks.Maven.xml
 COPY config/hudson.plugins.groovy.Groovy.xml /usr/share/jenkins/ref/hudson.plugins.groovy.Groovy.xml
 COPY config/jenkins.plugins.nodejs.tools.NodeJSInstallation.xml /usr/share/jenkins/ref/jenkins.plugins.nodejs.tools.NodeJSInstallation.xml
 COPY config/maven-global-settings-files.xml /usr/share/jenkins/ref/maven-global-settings-files.xml
+COPY config/org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml /usr/share/jenkins/ref/org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
 
 # SSH Keys & Credentials
 COPY config/credentials.xml /usr/share/jenkins/ref/credentials.xml

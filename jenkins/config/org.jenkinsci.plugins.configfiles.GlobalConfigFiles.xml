@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.configfiles.GlobalConfigFiles plugin="config-file-provider@2.16.4">
+    <configs class="sorted-set">
+        <comparator class="org.jenkinsci.plugins.configfiles.GlobalConfigFiles$1"/>
+        <jenkins.plugins.nodejs.configfiles.NPMConfig plugin="nodejs@1.2.4">
+            <id>90b0b095-ef41-4007-8fe6-3127ef17c699</id>
+            <name>npm-config</name>
+            <comment>user config</comment>
+            <content>registry=http://powercardangular.aix.hps.int:18081/repository/npm-group/
+                _auth=&quot;YWRtaW46YWRtaW4xMjM=&quot;
+                always-auth=true
+                email=sebastien.tauvel@hps-worldwide.com</content>
+            <providerId>jenkins.plugins.nodejs.configfiles.NPMConfig</providerId>
+            <registries/>
+        </jenkins.plugins.nodejs.configfiles.NPMConfig>
+    </configs>
+</org.jenkinsci.plugins.configfiles.GlobalConfigFiles>
