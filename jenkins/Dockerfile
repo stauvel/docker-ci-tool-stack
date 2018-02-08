@@ -7,6 +7,17 @@ RUN apt-get update \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
+RUN echo "Chrome Installation begins..."
+#Fix https://github.com/jenkinsci/docker/issues/543
+COPY 99fixbadproxy /etc/apt/apt.conf.d/99fixbadproxy
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update
+RUN apt-get install -y google-chrome-stable
+ENV CHROME_BIN /usr/bin/google-chrome
+RUN echo "Chrome installation complete..."
+RUN $CHROME_BIN --version
+
 # getting the docker-cli
 # --- Attention: docker.sock needs to be mounted as volume in docker-compose.yml
 # see: https://issues.jenkins-ci.org/browse/JENKINS-35025
